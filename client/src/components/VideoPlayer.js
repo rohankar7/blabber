@@ -4,7 +4,7 @@ import {io} from 'socket.io-client';
 import Peer from 'simple-peer';
 import { AuthContext } from './Auth';
 
-// var socket = io('http://localhost:5000/main');
+// var socket = io('https://blabber-complete-server.herokuapp.com/);
 var socket = null;
 
 const VideoPlayer = (props) => {
@@ -26,7 +26,7 @@ const VideoPlayer = (props) => {
     var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
 
     useEffect(() => {
-        socket = io('http://localhost:5000');
+        socket = io('https://blabber-complete-server.herokuapp.com/');
         navigator.mediaDevices.getUserMedia({
             audio: true, video: {
                 mandatory: {

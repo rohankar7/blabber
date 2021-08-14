@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/static/css/main.83a2a1f7.chunk.css",
+    "main.js": "/static/js/main.e9697a42.chunk.js",
+    "main.js.map": "/static/js/main.e9697a42.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.61a7331d.js",
+    "runtime-main.js.map": "/static/js/runtime-main.61a7331d.js.map",
+    "static/css/2.ca756f56.chunk.css": "/static/css/2.ca756f56.chunk.css",
+    "static/js/2.9b2fe959.chunk.js": "/static/js/2.9b2fe959.chunk.js",
+    "static/js/2.9b2fe959.chunk.js.map": "/static/js/2.9b2fe959.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.ca756f56.chunk.css.map": "/static/css/2.ca756f56.chunk.css.map",
+    "static/css/main.83a2a1f7.chunk.css.map": "/static/css/main.83a2a1f7.chunk.css.map",
+    "static/js/2.9b2fe959.chunk.js.LICENSE.txt": "/static/js/2.9b2fe959.chunk.js.LICENSE.txt",
+    "static/media/Chat.css": "/static/media/171-1710812_forest-wallpaper-4k (copy).f72d3d8e.jpg",
+    "static/media/UI.css": "/static/media/TitilliumWeb-Bold.6d6124d1.ttf",
+    "static/media/profile.8ae99660.jpg": "/static/media/profile.8ae99660.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.61a7331d.js",
+    "static/css/2.ca756f56.chunk.css",
+    "static/js/2.9b2fe959.chunk.js",
+    "static/css/main.83a2a1f7.chunk.css",
+    "static/js/main.e9697a42.chunk.js"
+  ]
+}
