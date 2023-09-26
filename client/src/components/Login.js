@@ -23,7 +23,7 @@ const Login = ({history}) => {
             fire.auth().onAuthStateChanged(user=>{
                 if(user!==null){
                     emailVerified = user.emailVerified;
-                    // console.log('User Verified', emailVerified);
+                    console.log('User Verified', emailVerified);
                 }
             });
             if(emailVerified===true){

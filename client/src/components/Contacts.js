@@ -44,6 +44,7 @@ const Contacts = (props) => {
 
     useEffect(()=>{
         try{
+            console.log(fire.database().ref().child('users'))
             fire.database().ref().child('users').on('value', (snapshot)=>{
                 if(snapshot.val()!=null){
                     setUsers({...snapshot.val()});
@@ -53,6 +54,7 @@ const Contacts = (props) => {
                     // })
                 }
             });
+            console.log("Users", users)
         } catch(error){
             console.log(error);
         }

@@ -15,6 +15,23 @@ const ManageUser = (props) => {
     const [email, setEmail] = useState('');
     const [emailToVerify, setEmailToVerify] = useState(false);
     const [resetMsg, setResetMsg] = useState('');
+    var timerTime = 10;
+
+    const myInterval = setInterval(myTimer, 1000);
+
+    function myTimer() {
+        document.getElementById("timer").innerHTML = timerTime;
+        timerTime -= 1;
+        if(timerTime===-1){
+            stopTimer();
+        }
+    }
+
+    function stopTimer() {
+        clearInterval(myInterval);
+        console.log("Done")
+        window.location.href = '/'
+    }
     
 
     fire.auth().onAuthStateChanged(user=>{
@@ -117,7 +134,12 @@ const ManageUser = (props) => {
     return (
         <div className='ManageUser'>
             <div className='verifyEmail' style={{display: emailToVerify? 'block' : 'none'}}>{
-                emailVerified? (<Redirect to='/login'/>) : (<div><h1 style={{color: 'white'}}>Verify your email!!!</h1></div>)
+                emailVerified? (<Redirect to='/login'/>) : (<div>
+                    <h1 style={{color: 'white'}}>Verify your email!!!</h1>
+                    <h2 style={{color: 'white'}}>This page closes in&nbsp;
+                        <span style={{color: 'white'}} id='timer'>10</span>
+                    </h2>
+                </div>)
             }</div>
             <div className='ManageUser' style={{display: (resetPassword)? 'block' : 'none'}}>
                 {

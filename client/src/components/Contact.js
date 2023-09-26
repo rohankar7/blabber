@@ -23,7 +23,7 @@ const Contact = (props) => {
 
     useEffect(()=>{
         props.sendBackData(false);
-        
+        console.log("FIRE", fire)
         if(props.lastMessage!==undefined)
             setLastMessage(props.lastMessage.lastMessage.lastMessage);
         else
