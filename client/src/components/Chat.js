@@ -470,7 +470,7 @@ const Chat = (props) => {
                             <h2>{userName}</h2>
                             {/* <h3>Last Seen: ???</h3> */}
                         </div>
-                        <div className='phoneCall'><i className="fas fa-phone"></i></div>
+                        {/* <div className='phoneCall'><i className="fas fa-phone"></i></div> */}
                         <div className='videoCall'><i className="fas fa-video" onClick={() => setAboutToCall(true)}></i></div>
                     </div>
                     <div className='div_messages' style={{ height: usingEmojis ? "47vh" : "70vh" }}>
