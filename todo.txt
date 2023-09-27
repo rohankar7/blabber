@@ -1,0 +1,1 @@
+1) Check the firebase database: how it works and why it isn't fetching user data!
