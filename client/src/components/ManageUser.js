@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import {Redirect} from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Redirect } from 'react-router-dom';
 import fire from '../fire';
 
 const ManageUser = (props) => {
@@ -17,42 +17,42 @@ const ManageUser = (props) => {
     const [resetMsg, setResetMsg] = useState('');
     var timerTime = 10;
 
-    const myInterval = setInterval(myTimer, 1000);
+    // const myInterval = setInterval(myTimer, 1000);
 
-    function myTimer() {
-        document.getElementById("timer").innerHTML = timerTime;
-        timerTime -= 1;
-        if(timerTime===-1){
-            stopTimer();
-        }
-    }
+    // function myTimer() {
+    //     document.getElementById("timer").innerHTML = timerTime;
+    //     timerTime -= 1;
+    //     if(timerTime===-1){
+    //         stopTimer();
+    //     }
+    // }
 
-    function stopTimer() {
-        clearInterval(myInterval);
-        console.log("Done")
-        window.location.href = '/'
-    }
-    
+    // function stopTimer() {
+    //     clearInterval(myInterval);
+    //     console.log("Done")
+    //     window.location.href = '/'
+    // }
 
-    fire.auth().onAuthStateChanged(user=>{
-        if(user===null){
+
+    fire.auth().onAuthStateChanged(user => {
+        if (user === null) {
             setEmailVerified(false);
         }
-        else{
+        else {
             setEmailVerified(user.emailVerified);
         }
     });
 
     const sendPasswordResetEmail = (event) => {
         event.preventDefault();
-        fire.auth().sendPasswordResetEmail(email).then(()=>{
+        fire.auth().sendPasswordResetEmail(email).then(() => {
             console.log('Password Reset Email send');
             setResetMsg('Check your email for the password reset link');
-        }).catch(err=>{
-            if(err.code==="auth/user-not-found"){
+        }).catch(err => {
+            if (err.code === "auth/user-not-found") {
                 setResetMsg("There is no user record corresponding to this email.");
             }
-            else{
+            else {
                 setResetMsg("There is an error related to the submitted credentials");
             }
         });
@@ -64,7 +64,7 @@ const ManageUser = (props) => {
         const url = window.location.href;
         name = name.replace(/[\][\]]/g, "\\$&");
         const regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-        results = regex.exec(url);
+            results = regex.exec(url);
         if (!results) return null;
         const decodedURIComponent = decodeURIComponent(results[2].replace(/\+/g, " "));
         return decodedURIComponent;
@@ -72,94 +72,94 @@ const ManageUser = (props) => {
 
     const updatePassword = (event) => {
         event.preventDefault();
-        if(password===confirmPassword){
-            fire.auth().confirmPasswordReset(actionCode, password).then(()=>{
+        if (password === confirmPassword) {
+            fire.auth().confirmPasswordReset(actionCode, password).then(() => {
                 console.log('Password Set Successfully');
                 setResetDone(true);
-            }).catch(err=>console.log('Password Reset Error: ', err));
+            }).catch(err => console.log('Password Reset Error: ', err));
         }
-        else{
+        else {
             console.log('Passwords don\'t match');
         }
     };
 
-    
-    useEffect(()=>{
+
+    useEffect(() => {
         console.log('MANAGE USER');
-        if(props.location.type===undefined){
+        if (props.location.type === undefined) {
             // email verification
             var mode = getParameterByName('mode');
             var actionCode = getParameterByName('oobCode');
-            if(mode!==null && actionCode!==null){
+            if (mode !== null && actionCode !== null) {
                 // Either email verification or password reset
                 // read the mode and action code to determine type
                 // if mode = email verification then applyActionCode
                 // else if mode = password reset then verifyPasswordResetCode
                 setActionCode(actionCode);
-                switch(mode){
-                    case 'verifyEmail': fire.auth().applyActionCode(actionCode).then((res)=>{
+                switch (mode) {
+                    case 'verifyEmail': fire.auth().applyActionCode(actionCode).then((res) => {
                         console.log(res);
                         console.log('Verified');
                         setEmailVerified(true);
-                    }).catch(err=>console.log('Error In Email Verification', err));
+                    }).catch(err => console.log('Error In Email Verification', err));
                         break;
 
-                    case 'resetPassword':   fire.auth().verifyPasswordResetCode(actionCode).then((email) => {
+                    case 'resetPassword': fire.auth().verifyPasswordResetCode(actionCode).then((email) => {
                         setResetPassword(true);
-                    }).catch((error) => {console.log('Password Reset Error')});
+                    }).catch((error) => { console.log('Password Reset Error') });
                         break;
                     default: console.log('Error in Action');
                 }
             }
-            else if(mode===null && actionCode===null){
+            else if (mode === null && actionCode === null) {
                 setEmailToVerify(true);
             }
         }
-        else{
-            if(fire.auth().currentUser!==null){
-                if(fire.auth().currentUser.emailVerified===false){
+        else {
+            if (fire.auth().currentUser !== null) {
+                if (fire.auth().currentUser.emailVerified === false) {
                     setPasswordToReset(true);
                 }
-                else{
+                else {
                     setPasswordToReset(false);
                 }
             }
-            else{
+            else {
                 setPasswordToReset(true);
             }
         }
-        return () => {mode = ''; actionCode = '';}
+        return () => { mode = ''; actionCode = ''; }
     }, [emailVerified, emailToVerify, props, passwordToReset]);
-    
+
     return (
         <div className='ManageUser'>
-            <div className='verifyEmail' style={{display: emailToVerify? 'block' : 'none'}}>{
-                emailVerified? (<Redirect to='/login'/>) : (<div>
-                    <h1 style={{color: 'white'}}>Verify your email!!!</h1>
-                    <h2 style={{color: 'white'}}>This page closes in&nbsp;
-                        <span style={{color: 'white'}} id='timer'>10</span>
+            <div className='verifyEmail' style={{ display: emailToVerify ? 'block' : 'none' }}>{
+                emailVerified ? (<Redirect to='/login' />) : (<div>
+                    <h1 style={{ color: 'white' }}>Verify your email!!!</h1>
+                    <h2 style={{ color: 'white' }}>This page closes in&nbsp;
+                        <span style={{ color: 'white' }} id='timer'>10</span>
                     </h2>
                 </div>)
             }</div>
-            <div className='ManageUser' style={{display: (resetPassword)? 'block' : 'none'}}>
+            <div className='ManageUser' style={{ display: (resetPassword) ? 'block' : 'none' }}>
                 {
-                    resetDone? (<Redirect to='/login' />) :
-                    <form onSubmit={updatePassword}>
-                        <input type='password' value={password} placeholder='Enter new password' onChange={(event)=>setPassword(event.target.value)}/>
-                        <input type='password' value={confirmPassword} placeholder='Re-enter new password' onChange={(event)=>setConfirmPassword(event.target.value)}/>
-                        <button className = 'uiButtons' type='submit'>Set</button>
-                    </form>
+                    resetDone ? (<Redirect to='/login' />) :
+                        <form onSubmit={updatePassword}>
+                            <input type='password' value={password} placeholder='Enter new password' onChange={(event) => setPassword(event.target.value)} />
+                            <input type='password' value={confirmPassword} placeholder='Re-enter new password' onChange={(event) => setConfirmPassword(event.target.value)} />
+                            <button className='uiButtons' type='submit'>Set</button>
+                        </form>
                 }
             </div>
-            <div className='sendResetLink' style={{display: passwordToReset? 'block' : 'none'}}>
-                <div style={{display: mailSend? 'none' : 'block'}} className='passwordResetForm_parent'>
+            <div className='sendResetLink' style={{ display: passwordToReset ? 'block' : 'none' }}>
+                <div style={{ display: mailSend ? 'none' : 'block' }} className='passwordResetForm_parent'>
                     <form onSubmit={sendPasswordResetEmail}>
-                    <div>RESET PASSWORD</div>
-                        <input type='email' value={email} placeholder='Enter your email' onChange={(event)=>setEmail(event.target.value)}/>
-                        <button className = 'uiButtons' type='submit'>Reset</button>
+                        <div>RESET PASSWORD</div>
+                        <input type='email' value={email} placeholder='Enter your email' onChange={(event) => setEmail(event.target.value)} />
+                        <button className='uiButtons' type='submit'>Reset</button>
                     </form>
                 </div>
-                <div style={{display: mailSend? 'block': 'none', color: 'white'}}>{resetMsg}</div>
+                <div style={{ display: mailSend ? 'block' : 'none', color: 'white' }}>{resetMsg}</div>
             </div>
         </div>
     )

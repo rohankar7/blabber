@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Contact from './Contact';
 import fire from '../fire';
 import User from './User';
@@ -9,12 +9,13 @@ const Contacts = (props) => {
     const [users, setUsers] = useState({});
     const [picUpdate, setPicUpdate] = useState('');
     const [picURL, setPicURL] = useState('');
-    const {currentUser} = useContext(AuthContext);
+    const { currentUser } = useContext(AuthContext);
+    const otherUsers = Object.keys(users).filter((key) => users[key].uid !== currentUser.uid)
 
     const getTimeofUpdatefromUser = async (childData) => {
         console.log(childData);
         await setPicUpdate(childData);
-        if(picURL!==""){
+        if (picURL !== "") {
             props.sendPicURL(picURL);
         }
     }
@@ -32,52 +33,47 @@ const Contacts = (props) => {
         props.sendPicURL(imgURL);
     }
 
-    const getClickedContact = async (childUID)=>{
+    const getClickedContact = async (childUID) => {
         // await setClickedUID(childUID);
         props.getDataFromContacts(childUID);
     }
 
     //get username from User
-    const getDataFromUser=async(child)=>{
+    const getDataFromUser = async (child) => {
         await props.getUserDataFromContacts(child);
     }
 
-    useEffect(()=>{
-        try{
-            console.log(fire.database().ref().child('users'))
-            fire.database().ref().child('users').on('value', (snapshot)=>{
-                if(snapshot.val()!=null){
-                    setUsers({...snapshot.val()});
+    useEffect(() => {
+        try {
+            fire.database().ref().child('users').on('value', (snapshot) => {
+                if (snapshot.val() != null) {
+                    setUsers({ ...snapshot.val() });
 
                     // users[currentUser.uid].contacts.forEach(contact=>{
                     //     console.log(contact);
                     // })
                 }
             });
-            console.log("Users", users)
-        } catch(error){
+        } catch (error) {
             console.log(error);
         }
-    },[picUpdate]);
+    }, [picUpdate]);
 
-    
+
     return (
         <div className='Contacts'>
             <div>
                 {
-                    Object.keys(users).filter((key)=>users[key].uid===currentUser.uid).map((key)=>(<User key={key} uid={currentUser.uid} uname={users[key].uname} parentCallback={getTimeofUpdatefromUser} getDataFromUser={getDataFromUser}/>))
+                    Object.keys(users).filter((key) => users[key].uid === currentUser.uid).map((key) => (<User key={key} uid={currentUser.uid} uname={users[key].uname} parentCallback={getTimeofUpdatefromUser} getDataFromUser={getDataFromUser} />))
                 }
             </div>
             <div className='searchBar'>
                 <div className='div_search'><i className="fas fa-search"></i></div>
-                <input type='text' id='contactsBar' placeholder='Search chats & groups'/>
+                <input type='text' id='contactsBar' placeholder='Search chats & groups' />
             </div>
             <div id='allContacts'>
                 {
-                    Object.keys(users).filter((key)=>users[key].uid!==currentUser.uid)
-                    .map((key)=>(<Contact key={key} uid={users[key].uid} uname={users[key].uname} sendBackData={sendBackData} updateImage={picUpdate} getClickedContact={getClickedContact} getContactPic={getContactPic} getContactName={getContactName} lastMessage={users[currentUser.uid].contacts[users[key].uid]}/>))
-                    // Object.keys(users)
-                    // .map((key)=>(<Contact key={key} uid={users[key].uid} uname={users[key].uname} sendBackData={sendBackData} updateImage={picUpdate} getClickedContact={getClickedContact} getContactPic={getContactPic} getContactName={getContactName}/>))
+                    Object.keys(users).filter((key) => users[key].uid !== currentUser.uid).map((key, id) => ((<Contact key={id} uid={users[key].uid} uname={users[key].uname} sendBackData={sendBackData} updateImage={picUpdate} getClickedContact={getClickedContact} getContactPic={getContactPic} getContactName={getContactName} />)))
                 }
             </div>
         </div>
