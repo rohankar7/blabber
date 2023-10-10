@@ -74,15 +74,15 @@ const Login = ({history}) => {
         <div className="Login">
             <form onSubmit={loginUser}>
                 <h1>LOGIN</h1>
-                <div id='error' style={{paddingBottom: '2vh', color: 'darkgreen'}}></div>
+                <div id='error' style={{paddingBottom: '2vh', color: 'purple'}}></div>
                 <div className="input_div"><input name='email' type="email" placeholder="Email" autoComplete="off" id='m' onClick={removeError} /></div>
                 <div className="input_div"><input type="password" name='password' placeholder="Password" id='p' onClick={removeError} /></div>
                 <button className='uiButtons' type="submit">Login</button>
                 <div className='link'>Forgot your password?&nbsp;
-                    <Link to={{pathname: '/manage-user', type:'resetPassword'}}>Reset</Link>
+                    <Link to={{pathname: '/manage-user', type:'resetPassword'}} style={{color: 'white'}}>Reset</Link>
                 </div>
                 <div className='link'>Don't have an account?&nbsp;
-                    <Link to='/signup'>Signup</Link>
+                    <Link to='/signup' style={{tcolor: 'white'}}>Signup</Link>
                 </div>
             </form>
         </div>

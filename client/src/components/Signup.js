@@ -80,14 +80,14 @@ const Signup = ({history}) => {
         <div className="Signup" id='signUp'>
             <form onSubmit={signupUser}>
                 <h1>SIGN&nbsp;UP</h1>
-                <div id='error' style={{paddingBottom: '2vh', color: 'darkgreen'}}></div>
+                <div id='error' style={{paddingBottom: '2vh', color: 'purple'}}></div>
                 <div className="input_div"><input type="text" placeholder="User Name" autoComplete="off" name='userName' id='u' onClick={removeError} /></div>
                 <div className="input_div"><input type="email" placeholder="Email" autoComplete='off' autofill='off' name='email' id='m' onClick={removeError} /></div>
                 <div className="input_div"><input type="password" placeholder="Password" name='password' id='p' onClick={removeError} /></div>
                 <div className="input_div"><input type="password" placeholder="Confirm Password" name='confirmPassword' id='cp' onClick={removeError} /></div>
                 <button className='uiButtons' type="submit">Sign Up</button>
                 <div className='link'>Already have an account?&nbsp;
-                    <Link to='/login'>Login</Link>
+                    <Link to='/login' style={{color: 'white'}}>Login</Link>
                 </div>
             </form>
         </div>

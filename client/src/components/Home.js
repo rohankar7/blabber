@@ -11,19 +11,20 @@ const Home = () => {
     return (
         <div className="Home">
             <div>
-                <ul className='navUl' style={{listStyleType: 'none'}}>
-                    <li className='navItems' style={{width: '80%', textAlign: 'left'}}>HOME</li>
-                    <div className='navBar'>
-                        <li className='navItems' id='loginNav'><Link to='/login' tabIndex='0' style={{textDecoration:'none', padding: '2vh', borderRadius: '5px', color: 'black'}}>Login</Link></li>
-                        <li className='navItems' ><Link to='/signup' tabIndex='1' style={{textDecoration:'none', padding: '2vh', borderRadius: '5px', color: '#000'}}>Sign Up</Link></li>
-                    </div>
-                </ul>
-            </div>
-            <div className='Back'>
                 <div className='Title'>
-                    Welcome to one of the best<br/> Chat communities online
+                    Welcome to Blabber<br/><br/>One of the growing communities
                 </div>
-                <img src='Assets/chat.png' alt='chatImage'/>
+            </div>
+            <div className='navUl' style={{listStyleType: 'none'}}>
+                <div className="signInBox">
+                    <ul className='navBar'>
+                        <li className='navItems'><Link to='/login' style={{textDecoration:'none', padding: '2.5vh 43%', borderRadius: '5px', color: 'black', position: 'relative', left: "-7%"}}>Login</Link></li>
+                        <li className='navItems'><Link to='/signup' style={{textDecoration:'none', padding: '2.5vh 38.5%', borderRadius: '5px', color: 'black', position: 'relative', left: "-7%"}}>Sign Up</Link></li>
+                    </ul>
+                </div>
+                <div className='Back'>
+                    <img src='Assets/chat.png' alt='chatImage'/>
+                </div>
             </div>
         </div>
     );

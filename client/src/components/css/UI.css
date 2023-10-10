@@ -13,20 +13,25 @@ body{
     font-weight: bold;
     /* overflow-y: hidden; */
 }
-
+.Home{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: yellowgreen;
+}
 .Login, .Signup, .ManageUser{
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: rgb(61, 60, 60);
+    /* background: rgb(61, 60, 60); */
+    background: yellowgreen;
 }
-
 #signUp form{
     height: 75vh;
     width: 40vw;
 }
-
 .Signup>form, .Login>form, .ManageUser>form, .passwordResetForm_parent>form{
     display: flex;
     flex-direction: column;
@@ -43,75 +48,381 @@ body{
     border-radius: 20%;
     box-shadow: 0px 8px 25px rgb(0, 0, 0);
 }
-
 h1{
     padding-top: 0;
     padding-bottom: 4vh;
 }
-
 .input_div{
     padding-bottom: 5vh;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
 input{
     width: 20vw;
     padding: 2vh;
     font-size: large;
 }
-
 .uiButtons{
     width: 10vw;
     height: 6vh;
     padding: 1vh;
     box-shadow: 0px 5px 20px rgb(24, 38, 49);
     font-size: large;
+    border: none;
 }
 
 .link{
     padding-top: 3vh;
 }
-.navBar, .navUl{
+.navUl{
+    width: 100vw;
+    height: 70vh;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: #fff;
+}
+.signInBox{
+    position: relative;
+    top: -5vh;
+    width: 50vw;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.navBar{
+    width: 30vw;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    font-size: 30px;
+    background: #FFD15C;
+    box-shadow: 0px 5px 20px rgb(24, 38, 49);
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+    border-radius: 20%;
+    /* box-shadow: 0px 8px 25px rgb(0, 0, 0); */
 }
 .navItems{
-    float: left;
     text-align: center;
-    background-color: white;
-    min-width: 180px;
-    height: 10vh;
-    font-size: 150%;
-    padding-top: 3.5vh;
+    width: 70%;
+    height: 9vh;
     display: block;
+    text-wrap: nowrap;
+    text-decoration: none;
+    background: rgb(41, 151, 202);
+    box-shadow: 0px 5px 20px rgb(41, 151, 202);
+    padding-top: 2.5vh;
+    /* background: #F3705A; */
 }
-.navItems :hover{
-    background-color: rgb(41, 151, 202);
-}
-.navItems:focus{
-    background-color: rgb(41, 151, 202);
+.navItems:hover, .navItems:focus, .uiButtons:hover{
+    background-color: #F3705A;
+    box-shadow: 0px 5px 20px #F3705A;
 }
 .Title{
     font-size: 50px;
     font-weight: 300;
     position: relative;
-    top: 10vh;
-    margin-left: auto;
     text-align: center;
+    width: 100vw;
+    height: 30vh;
     color: rgb(39, 49, 56);
-    padding-bottom: 100px;
-}
-.Back>img{
-    position: relative;
-    top: 7vw;
-    left: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .Back{
-    background: yellowgreen;
-    width: 100%;
+    position: relative;
+    top: -5vh;
+    width: 50vw;
     height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.Back>img{
+    width: 70%;
+    height: 70%;
+}
+/*Tablet Resolution*/
+@media screen and (max-width: 1536px){
+    @font-face {
+        font-family: 'Titillium Web', sans-serif;
+        src: url('../../fonts/TitilliumWeb-Bold.ttf') format('truetype');
+    }
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        outline: none;
+    }
+    body{
+        background-color: rgb(61, 60, 60);
+        font-weight: bold;
+        /* overflow-y: hidden; */
+    }
+    .Home{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        background: yellowgreen;
+    }
+    .Login, .Signup, .ManageUser{
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* background: rgb(61, 60, 60); */
+        background: yellowgreen;
+    }
+    #signUp form{
+        height: 75vh;
+        width: 40vw;
+    }
+    .Signup>form, .Login>form, .ManageUser>form, .passwordResetForm_parent>form{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        align-self: center;
+        flex-wrap: nowrap;
+        justify-content: space-evenly;
+        background-color: rgb(41, 151, 202);
+        padding-top: 5vh;
+        padding-bottom: 5vh;
+        height: 60vh;
+        width: 30vw;
+        border-radius: 20%;
+        box-shadow: 0px 8px 25px rgb(0, 0, 0);
+    }
+    h1{
+        padding-top: 0;
+        padding-bottom: 4vh;
+    }
+    .input_div{
+        padding-bottom: 5vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    input{
+        width: 20vw;
+        padding: 2vh;
+        font-size: large;
+    }
+    .uiButtons{
+        width: 10vw;
+        height: 6vh;
+        padding: 1vh;
+        box-shadow: 0px 5px 20px rgb(24, 38, 49);
+        font-size: large;
+        border: none;
+    }
+    
+    .link{
+        padding-top: 3vh;
+    }
+    .navUl{
+        width: 100vw;
+        height: 70vh;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .signInBox{
+        position: relative;
+        top: -5vh;
+        width: 50vw;
+        height: 70vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .navBar{
+        width: 30vw;
+        height: 60vh;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        flex-direction: column;
+        font-size: 30px;
+        background: #FFD15C;
+        box-shadow: 0px 5px 20px rgb(24, 38, 49);
+        padding-top: 5vh;
+        padding-bottom: 5vh;
+        border-radius: 20%;
+        /* box-shadow: 0px 8px 25px rgb(0, 0, 0); */
+    }
+    .navItems{
+        text-align: center;
+        width: 70%;
+        height: 9vh;
+        display: block;
+        text-wrap: nowrap;
+        text-decoration: none;
+        background: rgb(41, 151, 202);
+        box-shadow: 0px 5px 20px rgb(41, 151, 202);
+        padding-top: 2.5vh;
+        /* background: #F3705A; */
+    }
+    .navItems:hover, .navItems:focus, .uiButtons:hover{
+        background-color: #F3705A;
+        box-shadow: 0px 5px 20px #F3705A;
+    }
+    .Title{
+        font-size: 50px;
+        font-weight: 300;
+        position: relative;
+        text-align: center;
+        width: 100vw;
+        height: 30vh;
+        color: rgb(39, 49, 56);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .Back{
+        position: relative;
+        top: -5vh;
+        width: 50vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .Back>img{
+        width: 80%;
+        height: 60%;
+    }
+}
+/*Tablet Resolution Rotated*/
+@media screen and (max-width: 1024px){
+    #signUp form{
+        height: 75vh;
+        width: 40vw;
+    }
+    .Signup>form, .Login>form, .ManageUser>form, .passwordResetForm_parent>form{
+        background-color: rgb(41, 151, 202);
+        padding-top: 5vh;
+        padding-bottom: 5vh;
+        height: 60vh;
+        width: 30vw;
+        border-radius: 20%;
+        box-shadow: 0px 8px 25px rgb(0, 0, 0);
+    }
+    input{
+        width: 20vw;
+        padding: 2vh;
+        font-size: large;
+    }
+    .uiButtons{
+        width: 10vw;
+        height: 6vh;
+        padding: 1vh;
+        box-shadow: 0px 5px 20px rgb(24, 38, 49);
+    }
+    .navUl{
+        width: 100vw;
+        height: 70vh;
+    }
+    .signInBox{
+        top: -5vh;
+        width: 80vw;
+        height: 70vh;
+    }
+    .navBar{
+        width: 40vw;
+        height: 55vh;
+        font-size: 24px;
+        /* box-shadow: 0px 8px 25px rgb(0, 0, 0); */
+    }
+    .navItems{
+        width: 70%;
+        height: 9vh;
+        background: rgb(41, 151, 202);
+        box-shadow: 0px 5px 20px rgb(41, 151, 202);
+        padding-top: 2.5vh;
+        /* background: #F3705A; */
+    }
+    .Title{
+        font-size: 50px;
+        font-weight: 300;
+        width: 100vw;
+        height: 30vh;
+        color: rgb(39, 49, 56);
+    }
+    .Back{
+        top: -5vh;
+        left: -2.5vw;
+        width: 60vw;
+        height: 100vh;
+    }
+    .Back>img{
+        width: 80%;
+        height: 40%;
+    }
+}
+/*Mobile Resolution*/
+@media screen and (max-width: 786px){
+    .Login, .Signup, .ManageUser{
+        height: 100vh;
+    }
+    #signUp form{
+        height: 75vh;
+        width: 80vw;
+    }
+    .Signup>form, .Login>form, .ManageUser>form, .passwordResetForm_parent>form{
+        width: 80vw;
+        border-radius: 20%;
+        box-shadow: 0px 8px 25px rgb(0, 0, 0);
+    }
+    h1{
+        padding-top: 0;
+        padding-bottom: 4vh;
+    }
+    input{
+        width: 60vw;
+        padding: 2vh;
+        font-size: large;
+    }
+    .uiButtons{
+        width: 30vw;
+    }
+    
+    .link{
+        padding-top: 3vh;
+    }
+    .signInBox{
+        width: 100vw;
+        top: 5vh;
+    }
+    .navBar{
+        width: 80vw;
+        height: 50vh;
+        font-size: 24px;
+    }
+    .navItems{
+        width: 70%;
+        height: 9vh;
+    }
+    .navItems:hover, .navItems:focus{
+        background-color: #F3705A;
+        box-shadow: 0px 5px 20px #F3705A;
+    }
+    .Title{
+        font-size: 40px;
+        width: 80vw;
+        height: 30vh;
+        top: 10vh;
+        color: rgb(39, 49, 56);
+    }
+    .Back{
+        display: none;
+    }
 }
