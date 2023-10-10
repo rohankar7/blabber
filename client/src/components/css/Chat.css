@@ -1,29 +1,23 @@
-/* @font-face {
+@font-face {
     font-family: 'Titillium Web', sans-serif;
     src: url('../../fonts/TitilliumWeb-BoldItalic.ttf') format('truetype');
-} */
+}
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* font-family: 'Titillium Web'; */
+    font-family: 'Titillium Web';
 }
-/* *::-webkit-scrollbar{
-    display: none;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-    overflow-y: hidden;
-} */
 body{
     font-family: Helvetica,Georgia,sans-serif;
     word-wrap: break-word;
     overflow: hidden;
 }
 .profileImages{
-    width: 5vw;
-    height: 5vw;
+    width: 4vw;
+    height: 4vw;
     border-radius: 50%;
-    background-color: red;
+    background-color: #a3d2f1;
 }
 
 .Contacts{
@@ -41,24 +35,29 @@ body{
 }
 
 .Contact{
-    width: 99.8%;
-    border: 2px solid rgb(36, 6, 6);
+    width: 100%;
     display: flex;
     align-items: center;
-    background-color: rgb(224, 228, 226);
+    background-color: #b8cccc;
     cursor: pointer;
 }
+.Contact:hover{
+    background: rgb(41, 151, 202);
+}
 .User{
-    width: 99.8%;
-    border: 2px solid rgb(36, 6, 6);
+    width: 100%;
     display: flex;
     align-items: center;
-    flex-direction: column;
-    background-color: rgb(224, 228, 226);
-    justify-content: flex-start;
+    background-color: #b8cccc;
 }
 .section1{
     cursor: pointer;
+    padding: 0.25vw;
+}
+.section2{
+    cursor: pointer;
+    padding-left: 2vw;
+    font-size: 16px;
 }
 .Chat{
     width: 70vw;
@@ -80,6 +79,8 @@ body{
     display: flex;
     flex-direction: column;
     background-color: white;
+    border-left: 2px solid gray;
+    border-right: 2px solid gray;
 }
 #contactsBar{
     border: none;
@@ -89,7 +90,7 @@ body{
 i{
     padding: 0.5em;
     cursor: pointer;
-    background-color: #949595;
+    background-color: gray;
     border-radius: 50%;
 }
 i:hover{
@@ -100,7 +101,6 @@ i:hover{
     display: flex;
     align-items: center;
     background-color: white;
-    border: 2px solid rgb(148, 142, 142);
 }
 #PicInput{
     display: none;
@@ -110,8 +110,10 @@ i:hover{
     background-color: rgba(224, 228, 226, 1);
     position: absolute;
     z-index: 3;
-    min-height: 88.5vh;
-    border: 2px solid;
+    height: 70vh;
+    background: rgb(41, 151, 202);
+    border-radius: 20px;
+    top: 1.75vh;
 }
 .userProfile_settings{
     min-width: 100%;
@@ -136,31 +138,38 @@ i:hover{
 }
 .UserButtons{
     /* float: right; */
-    width: 15vw;
+    width: 18vw;
     height: 10vh;
-    /* border: 2px solid; */
+    display: flex;
+    justify-content: space-between;
 }
-#PicInput_label{
+.PicInput_label{
     /* min-height: 4vh; */
     padding: 1vh;
-    background: blue;
+    /* background: #F3705A; */
+    background: yellowgreen;
+    cursor: pointer;
+    width: 15vw;
+    text-align: center;
+    box-shadow: 0px 5px 20px yellowgreen;
+}
+.PicInput_label:hover{
+    background: #F3705A;
+    box-shadow: 0px 5px 20px #F3705A;
 }
 .showChoiceButtons{
     width: 6vw;
     justify-content: space-between;
 }
 #user{
-    background-color: rgb(224, 228, 226);
-    min-width: 24vh;
+    /* width: 100%; */
     position: relative;
-    /* left: -4vw; */
 }
 
 /* Chat.js Styling */
 .div_messages{
     /* background-image: linear-gradient(to top, #96fbc4 0%, #f9f586 100%); */
     background-image: url('../../Images/171-1710812_forest-wallpaper-4k\ \(copy\).jpg');
-    border: 2px solid black;
     overflow-y: auto;
 }
 .div_search{
@@ -168,20 +177,20 @@ i:hover{
     display: flex;
 }
 .chatName{
-    border: 2px solid black;
     padding: 1em;
+    height: 4.75vw;
     display: flex;
     align-items: center;
+    background-color: #b8cccc;
 }
 .div_type_message{
     width: 100%;
-    border: 2px solid black;
     display: flex;
     background-color: #b8cccc;
 }
 .inputMessage{
     width: 95%;
-    padding: 0;
+    padding: 6px;
     border: none;
 }
 .details{
@@ -223,14 +232,22 @@ i:hover{
     margin-left: 0.5em;
     margin-right: 0.5em;
 }
+.msgSpan{
+    min-width: 50px;
+}
 .contactNotSelected{
     width: 100%;
     height: 89vh;
     background-image: linear-gradient(to top, #96fbc4 0%, #f9f586 100%);
     border-radius: 0%;
-    border: 2px solid black;
     box-shadow: none;
-    align-items:baseline;
+    flex-direction: column;
+    justify-content: space-evenly;
+    text-align: center
+}
+.welcomeTitle{
+    width: 100%;
+    text-align: center;
 }
 /*Chat Messages*/
 .thisIsNotUser{
@@ -311,7 +328,7 @@ li{
     z-index: 5;
     position: absolute;
     width: 5vw;
-    height: 8vh;
+    max-height: 8vh;
 }
 #edit, #remove, #copy, #quote{
     width: 100%;
@@ -393,10 +410,6 @@ p {
     background: #ccc;
     cursor: pointer;
     border-radius: 5px;
-    border: 1px solid #ccc;
-}
-.button:hover {
-    background: #ddd;
 }
 #fileElem {
     display: none;
@@ -487,7 +500,6 @@ p {
     height: 484px;
     width: 644px;
     position: relative;
-    /* border: 2px solid; */
 }
 .fa-phone-slash{
     color: white;
@@ -516,4 +528,12 @@ p {
     position: relative;
     right: 20px;
     top: -20px;
+}
+.messageOptions{
+    border: none;
+    background: black;
+    color: white;
+}
+.messageOptions:hover{
+    background: #F3705A;
 }

@@ -81,9 +81,8 @@ const User = (props) => {
         <div className='User'>
             <div className='section1' id="user">
                 <img src={imgLink} alt='' unselectable='on' className='profileImages' onClick={clicked} />
-                <span>Welcome {props.uname}</span>
             </div>
-            <div className='section2'></div>
+            <div className='section2'>Welcome {props.uname}</div>
             <div className='uploadProfile' style={styleObj}>
                 <div className='userProfile_settings'>
                     <div>Click on your profile to go back</div>
@@ -91,7 +90,7 @@ const User = (props) => {
                     <div className='UserButtons updatePic'>
                         <i className="far fa-user-circle"></i>
                         <div className='updatePic_child'>
-                            <label id='PicInput_label' htmlFor='PicInput' style={{display: chosePic? 'none' : 'block', cursor: 'pointer'}}>Select Profile Image</label>
+                            <label id='PicInput_label' className="PicInput_label" htmlFor='PicInput' style={{display: chosePic? 'none' : 'block'}}>Select Profile Image</label>
                             <input type='file' onChange={chooseFile} id='PicInput' accept='image/*' />
                             <div className='showChoiceButtons' style={{display: chosePic? 'block' : 'none'}} >
                                 <i className="far fa-times-circle" id='cancelUpload' onClick={cancelPicUpload}></i>
@@ -99,10 +98,9 @@ const User = (props) => {
                             </div>
                         </div>
                     </div>
-
                     <div className='UserButtons signOut'>
                         <i className="fas fa-power-off"></i>
-                        <div style={{minWidth: '11vw', background: 'blue', textAlign: 'center', padding: '1vh', cursor: 'pointer'}} onClick = {signOut}>Sign Out</div>
+                        <div className="PicInput_label" onClick = {signOut}>Sign Out</div>
                     </div>
                 </div>
                 

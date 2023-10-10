@@ -91,7 +91,6 @@ const Chat = (props) => {
         setArr([...fileArray]);
         document.getElementById('uploadButton').disabled = false;
     }
-
     function previewFile(file) {
         let reader = new FileReader();
         reader.readAsDataURL(file);
@@ -231,7 +230,6 @@ const Chat = (props) => {
         // document.getElementsByClassName('mySlides')[0].appendChild(tempImg);
         // document.getElementsByClassName('mySlides')[0].childNodes[0].className = 'BigPreview';
     }
-
     const sendMessage = () => {
         if (typedText.length !== 0) {
             var today = new Date();
@@ -262,7 +260,6 @@ const Chat = (props) => {
             setTypedText('');
         }
     }
-
     const updateText = (event) => {
         setTypedText(event.target.value);
     }
@@ -322,24 +319,23 @@ const Chat = (props) => {
 
     const displayMsgOptions = (event) => {
         if (event.target.className === optionIconClassName) {
+            event.target.className = "";
             msgKey = event.target.id;
-            event.target.innerHTML = `<section id='menuSection' style={{background:'#fff'}}>
-            <button id='edit'>Edit</button>
-            <button id='quote'>Quote</button>
-            <button id='copy'>Copy</button>
-            <button id='remove'>Remove</button>
+            event.target.innerHTML = `<section id='menuSection' style="background: #000;">
+            <button class='messageOptions' id='copy'>Copy</button>
+            <button class='messageOptions' id='remove'>Remove</button>
             </section>`
             setDisplayingMenu(true);
-            var editButton = document.getElementById('edit');
-            var quoteButton = document.getElementById('quote');
+            // var editButton = document.getElementById('edit');
+            // var quoteButton = document.getElementById('quote');
             var copyButton = document.getElementById('copy');
             var removeButton = document.getElementById('remove');
-            editButton.onclick = () => {
-                console.log('Edit function');
-            }
-            quoteButton.onclick = () => {
-                console.log('Quote function');
-            }
+            // editButton.onclick = () => {
+            //     console.log('Edit function');
+            // }
+            // quoteButton.onclick = () => {
+            //     console.log('Quote function');
+            // }
             copyButton.onclick = () => {
                 var copyText = event.target.parentElement.parentElement.childNodes[0].childNodes[0].data;
                 var tempInputField = document.createElement('input');
@@ -460,8 +456,11 @@ const Chat = (props) => {
     return (
         <div id='god' onDrop={e => handleGod(e)} onDragOver={e => handleGod(e)} onDragEnter={e => handleGod(e)} onDragLeave={e => handleGod(e)}>
             <div className='Chat' onClick={checkClick} style={{ display: (fileDragged || fileDropped || fileAdded || fileArray.length !== 0) ? 'none' : 'block' }}>
-                <div className='contactNotSelected' style={{ display: isContactSelected ? "none" : "block" }}>
-                    <h1>Hello {props.user}</h1>
+                <div className='contactNotSelected' style={{ display: isContactSelected ? "none" : "flex" }}>
+                    <h1 className="welcomeTitle">Welcome {props.user}</h1>
+                    <div className='chatImage'>
+                        <img src='Assets/chat.png' alt='chatImage'/>
+                    </div>
                 </div>
                 <div className='userChat' style={{ display: isContactSelected ? "block" : "none" }}>
                     <div className='chatName'>
@@ -486,7 +485,7 @@ const Chat = (props) => {
                                                 {
                                                     messageToDisplay(messages, key)
                                                 }
-                                                <div className="time">{messages[key].time}</div>
+                                                <div className="time">{messages[key].time.split(":").slice(0,2).join(":")}</div>
                                             </span>
                                             <span className='space' style={{ background: "rgba(0, 0, 0, 0)", width: "2vw", height: "4vh" }}>
                                                 <i className="" id={key} onClick={displayMsgOptions} style={{ zIndex: '4 !important', position: 'absolute', padding: 0, float: 'right' }}></i>
@@ -498,7 +497,7 @@ const Chat = (props) => {
                                             {
                                                 messageToDisplay(messages, key)
                                             }
-                                            <div className="time">{messages[key].time}</div>
+                                            <div className="time">{messages[key].time.split(":").slice(0,2).join(":")}</div>
                                         </span>
                                         <span className='space' style={{ background: "rgba(0, 0, 0, 0)", width: "2vw", height: "4vh" }}>
                                             <i className="" id={key} onClick={displayMsgOptions} style={{ zIndex: '4 !important', position: 'absolute', padding: 0, float: 'right' }}></i>
